@@ -1,0 +1,25 @@
+/* Set the body background color to dark gray */
+body {
+    background-color: #343a40;
+    color: #fff;
+  }
+  
+  /* Set the color of the links in the navbar */
+  .navbar-light .navbar-nav .nav-link {
+    color: #fff;
+  }
+  
+  /* Set the font size of the Jumbotron headings */
+  .jumbotron h1, .jumbotron p {
+    font-size: 2rem;
+  }
+  
+  /* Set the height of the chart containers */
+  .card-body {
+    height: 300px;
+  }
+  
+  /* Set the font size of the chart labels */
+  .chartjs-size-monitor, .chartjs-size-monitor-expand, .chartjs-size-monitor-shrink {
+    font-size: 14px;
+  }

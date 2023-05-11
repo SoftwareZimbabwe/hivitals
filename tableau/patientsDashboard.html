@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Health Dashboard</title>
+  
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  
+  <!-- Chart.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+  
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  
+  <!-- Popper.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  
+  <!-- Bootstrap JS -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/style.css">
+  
+</head>
+<body>
+  
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Health Dashboard</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <!-- End Navbar -->
+  
+  <!-- Jumbotron -->
+  <div class="jumbotron jumbotron-fluid bg-dark text-light">
+    <div class="container">
+      <h1 class="display-4">Health Vitals</h1>
+      <p class="lead">A dashboard to track your health vitals including blood pressure, blood glucose, weight, height, and more.</p>
+    </div>
+  </div>
+  <!-- End Jumbotron -->
+  
+  <!-- Main Content -->
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6">
+        <!-- Blood Pressure Chart -->
+        <div class="card">
+          <div class="card-header bg-dark text-light">
+            Blood Pressure Chart
+          </div>
+          <div class="card-body">
+            <canvas id="blood-pressure-chart"></canvas>
+          </div>
+        </div>
+        <!-- End Blood Pressure Chart -->
+      </div>
+      <div class="col-md-6">
+        <!-- Blood Glucose Chart -->
+        <div class="card">
+          <div class="card-header bg-dark text-light">
+            Blood Glucose Chart
+          </div>
+          <div class="card-body">
+            <canvas id="blood-glucose-chart"></canvas>
+          </div>
+        </div>
+        <!-- End Blood Glucose Chart -->
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <!-- Weight Chart -->
+        <div class="card">
+          <div class="card-header bg-dark text-light">
+            Weight Chart
+          </div>
+          <div class="card-body">
+            <canvas id="weight-chart"></canvas>
+          </div>
+        </div>
+        <!-- End Weight Chart -->
+      </div>
+      <div class="col-md-6">
+        <!-- Height Chart -->
+        <div class="card">
+          <div class="card-header bg-dark text-light">
+            Height Chart
+          </div>
+          <div class="card-body">
+            <canvas id="height-chart"></canvas>
+          </div>
+        </div>
+        <!-- End Height Chart -->
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <!-- Pie Chart -->
+        <div class="card">
+          <div class="card-header bg-dark text-light">
+            BMI Classification
+          </div>
+          <div class="card-body">
+            <canvas id="pie-chart"></canvas>
+          </div>
+        </div>
+        <!-- End Pie Chart -->
+      </div>
+      <div class="col-md-6">
+        <!-- Bar Chart -->
+        <div class="card">
+          <div class="card-header bg-dark text-light">
+            Blood Pressure Classification
+          </div>
+          <div class="card-body">
+            <canvas id="bar-chart"></canvas>
+          </div>
+        </div>
+        <!-- End Bar Chart -->
+      </div>
+    </div>
+  </div>
+  <!-- End Main Content -->
+  
+  <!-- JavaScript -->
+  <script src="assets/app.js"></script>
+  <!-- End JavaScript -->
+  
+</body>
+</html>
