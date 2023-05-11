@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layout}">
+    <head>
+        <title th:text="#{home.index.headline}" />
+    </head>
+    <body style="background: url('/images/background.png');">
+        <div layout:fragment="content">
+            <h1 th:text="#{home.index.headline}" class="mb-4" style="color: #FEFEFE" />
+            <p th:utext="#{home.index.text}"  style="color: #FEFEFE" />
+            <p th:utext="#{home.index.swagger}" class="mb-5"  style="color: #FEFEFE" />
+            <div class="col-md-4 mb-5">
+                <h4 th:text="#{home.index.exploreEntities}" class="mb-3"  style="color: #DEDEDE"  />
+                <div class="list-group">
+                    <a th:href="@{/patients}" th:text="#{patient.list.headline}" class="list-group-item list-group-item-action" style="margin-bottom: 30px;"  />
+                    <a th:href="@{/bloodPressures}" th:text="#{bloodPressure.list.headline}" class="list-group-item list-group-item-action" style="margin-bottom: 30px;" />
+                    <a th:href="@{/weights}" th:text="#{weight.list.headline}" class="list-group-item list-group-item-action" style="margin-bottom: 30px;"  />
+                    <a th:href="@{/heights}" th:text="#{height.list.headline}" class="list-group-item list-group-item-action" style="margin-bottom: 30px;"  />
+                    <a th:href="@{/bloodGlucoses}" th:text="#{bloodGlucose.list.headline}" class="list-group-item list-group-item-action" style="margin-bottom: 30px;"  />
+                    <a th:href="@{/artRecords}" th:text="#{artRecord.list.headline}" class="list-group-item list-group-item-action" style="margin-bottom: 30px;"  />
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

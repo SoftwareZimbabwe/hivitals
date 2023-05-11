@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layout}">
+    <head>
+        <title th:text="#{height.list.headline}" />
+    </head>
+    <body>
+        <div layout:fragment="content">
+            <div class="d-flex flex-wrap mb-4">
+                <h1 th:text="#{height.list.headline}" class="flex-grow-1" />
+                <div>
+                    <a th:href="@{/heights/add}" th:text="#{height.list.createNew}" class="btn btn-primary ms-2" />
+                </div>
+            </div>
+            <div th:if="${heights.empty}" th:text="#{height.list.empty}" />
+            <div th:if="${!heights.empty}" class="table-responsive">
+                <table class="table table-striped table-hover align-middle">
+                    <thead>
+                        <tr>
+                            <th th:text="#{height.id.label}" scope="col" />
+                            <th th:text="#{height.patientNumber.label}" scope="col" />
+                            <th th:text="#{height.valueInCm.label}" scope="col" />
+                            <th><!-- --></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="height : ${heights}">
+                            <td th:text="${height.id}" />
+                            <td th:text="${height.patientNumber}" />
+                            <td th:text="${height.valueInCm}" />
+                            <td>
+                                <div class="float-end text-nowrap">
+                                    <a th:href="@{/heights/edit/{id}(id=${height.id})}" th:text="#{height.list.edit}" class="btn btn-sm btn-info" />
+                                    <form th:action="@{/heights/delete/{id}(id=${height.id})}"
+                                            th:data-confirm-message="#{delete.confirm}" method="post" class="js-submit-confirm d-inline">
+                                        <button th:text="#{height.list.delete}" type="submit" class="btn btn-sm btn-danger" />
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layout}">
+    <head>
+        <title th:text="#{bloodGlucose.list.headline}" />
+    </head>
+    <body>
+        <div layout:fragment="content">
+            <div class="d-flex flex-wrap mb-4">
+                <h1 th:text="#{bloodGlucose.list.headline}" class="flex-grow-1" />
+                <div>
+                    <a th:href="@{/bloodGlucoses/add}" th:text="#{bloodGlucose.list.createNew}" class="btn btn-primary ms-2" />
+                </div>
+            </div>
+            <div th:if="${bloodGlucoses.empty}" th:text="#{bloodGlucose.list.empty}" />
+            <div th:if="${!bloodGlucoses.empty}" class="table-responsive">
+                <table class="table table-striped table-hover align-middle">
+                    <thead>
+                        <tr>
+                            <th th:text="#{bloodGlucose.id.label}" scope="col" />
+                            <th th:text="#{bloodGlucose.patientNumber.label}" scope="col" />
+                            <th th:text="#{bloodGlucose.molarConcentration.label}" scope="col" />
+                            <th><!-- --></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="bloodGlucose : ${bloodGlucoses}">
+                            <td th:text="${bloodGlucose.id}" />
+                            <td th:text="${bloodGlucose.patientNumber}" />
+                            <td th:text="${bloodGlucose.molarConcentration}" />
+                            <td>
+                                <div class="float-end text-nowrap">
+                                    <a th:href="@{/bloodGlucoses/edit/{id}(id=${bloodGlucose.id})}" th:text="#{bloodGlucose.list.edit}" class="btn btn-sm btn-info" />
+                                    <form th:action="@{/bloodGlucoses/delete/{id}(id=${bloodGlucose.id})}"
+                                            th:data-confirm-message="#{delete.confirm}" method="post" class="js-submit-confirm d-inline">
+                                        <button th:text="#{bloodGlucose.list.delete}" type="submit" class="btn btn-sm btn-danger" />
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>

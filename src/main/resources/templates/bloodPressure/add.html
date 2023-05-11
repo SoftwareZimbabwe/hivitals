@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layout}">
+    <head>
+        <title th:text="#{bloodPressure.add.headline}" />
+    </head>
+    <body>
+        <div layout:fragment="content">
+            <div class="d-flex flex-wrap mb-4">
+                <h1 th:text="#{bloodPressure.add.headline}" class="flex-grow-1" />
+                <div>
+                    <a th:href="@{/bloodPressures}" th:text="#{bloodPressure.add.back}" class="btn btn-secondary" />
+                </div>
+            </div>
+            <div th:replace="~{fragments/forms::globalErrors('bloodPressure')}" />
+            <form th:action="${T(zw.co.softwarezimbabwe.hivitals.util.WebUtils).getRequest().requestURI}" method="post">
+                <div th:replace="~{fragments/forms::inputRow(object='bloodPressure', field='patientNumber')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='bloodPressure', field='systolic', type='number')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='bloodPressure', field='diastolic', type='number')}" />
+                <input type="submit" th:value="#{bloodPressure.add.headline}" class="btn btn-primary mt-4" />
+            </form>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layout}">
+    <head>
+        <title th:text="#{bloodGlucose.add.headline}" />
+    </head>
+    <body>
+        <div layout:fragment="content">
+            <div class="d-flex flex-wrap mb-4">
+                <h1 th:text="#{bloodGlucose.add.headline}" class="flex-grow-1" />
+                <div>
+                    <a th:href="@{/bloodGlucoses}" th:text="#{bloodGlucose.add.back}" class="btn btn-secondary" />
+                </div>
+            </div>
+            <div th:replace="~{fragments/forms::globalErrors('bloodGlucose')}" />
+            <form th:action="${T(zw.co.softwarezimbabwe.hivitals.util.WebUtils).getRequest().requestURI}" method="post">
+                <div th:replace="~{fragments/forms::inputRow(object='bloodGlucose', field='patientNumber')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='bloodGlucose', field='molarConcentration')}" />
+                <input type="submit" th:value="#{bloodGlucose.add.headline}" class="btn btn-primary mt-4" />
+            </form>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layout}">
+    <head>
+        <title th:text="#{patient.add.headline}" />
+    </head>
+    <body>
+        <div layout:fragment="content">
+            <div class="d-flex flex-wrap mb-4">
+                <h1 th:text="#{patient.add.headline}" class="flex-grow-1" />
+                <div>
+                    <a th:href="@{/patients}" th:text="#{patient.add.back}" class="btn btn-secondary" />
+                </div>
+            </div>
+            <div th:replace="~{fragments/forms::globalErrors('patient')}" />
+            <form th:action="${T(zw.co.softwarezimbabwe.hivitals.util.WebUtils).getRequest().requestURI}" method="post">
+                <div th:replace="~{fragments/forms::inputRow(object='patient', field='patientNumber')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='patient', field='firstName')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='patient', field='surname')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='patient', field='address')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='patient', field='dateOfBirth', inputClass='js-datepicker')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='patient', field='gender')}" />
+                <input type="submit" th:value="#{patient.add.headline}" class="btn btn-primary mt-4" />
+            </form>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,23 @@
+{
+  "DiagnosticReport": {
+    "type": "report",
+    "endpoint": "/report/{id}",
+    "fields": {
+      "id": "id",
+      "patientId": "subject.reference",
+      "issued": "issued",
+      "bloodGlucose": "result[0].valueQuantity.value",
+      "systolicBP": "result[1].valueQuantity.value",
+      "diastolicBP": "result[2].valueQuantity.value",
+      "weight": "result[3].valueQuantity.value",
+      "height": "result[4].valueQuantity.value",
+      "bmi": "result[5].valueQuantity.value",
+      "bloodGlucoseCategory": "result[0].interpretation.coding[0].code",
+      "bpCategory": "result[1].interpretation.coding[0].code",
+      "weightCategory": "result[3].interpretation.coding[0].code",
+      "heightCategory": "result[4].interpretation.coding[0].code",
+      "decision": "conclusion",
+      "note": "note[0].text"
+    }
+  }
+}

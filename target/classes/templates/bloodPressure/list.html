@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layout}">
+    <head>
+        <title th:text="#{bloodPressure.list.headline}" />
+    </head>
+    <body>
+        <div layout:fragment="content">
+            <div class="d-flex flex-wrap mb-4">
+                <h1 th:text="#{bloodPressure.list.headline}" class="flex-grow-1" />
+                <div>
+                    <a th:href="@{/bloodPressures/add}" th:text="#{bloodPressure.list.createNew}" class="btn btn-primary ms-2" />
+                </div>
+            </div>
+            <div th:if="${bloodPressures.empty}" th:text="#{bloodPressure.list.empty}" />
+            <div th:if="${!bloodPressures.empty}" class="table-responsive">
+                <table class="table table-striped table-hover align-middle">
+                    <thead>
+                        <tr>
+                            <th th:text="#{bloodPressure.id.label}" scope="col" />
+                            <th th:text="#{bloodPressure.patientNumber.label}" scope="col" />
+                            <th th:text="#{bloodPressure.systolic.label}" scope="col" />
+                            <th th:text="#{bloodPressure.diastolic.label}" scope="col" />
+                            <th><!-- --></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="bloodPressure : ${bloodPressures}">
+                            <td th:text="${bloodPressure.id}" />
+                            <td th:text="${bloodPressure.patientNumber}" />
+                            <td th:text="${bloodPressure.systolic}" />
+                            <td th:text="${bloodPressure.diastolic}" />
+                            <td>
+                                <div class="float-end text-nowrap">
+                                    <a th:href="@{/bloodPressures/edit/{id}(id=${bloodPressure.id})}" th:text="#{bloodPressure.list.edit}" class="btn btn-sm btn-info" />
+                                    <form th:action="@{/bloodPressures/delete/{id}(id=${bloodPressure.id})}"
+                                            th:data-confirm-message="#{delete.confirm}" method="post" class="js-submit-confirm d-inline">
+                                        <button th:text="#{bloodPressure.list.delete}" type="submit" class="btn btn-sm btn-danger" />
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>

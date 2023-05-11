@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layout}">
+    <head>
+        <title th:text="#{patient.list.headline}" />
+    </head>
+    <body>
+        <div layout:fragment="content">
+            <div class="d-flex flex-wrap mb-4">
+                <h1 th:text="#{patient.list.headline}" class="flex-grow-1" />
+                <div>
+                    <a th:href="@{/patients/add}" th:text="#{patient.list.createNew}" class="btn btn-primary ms-2" />
+                </div>
+            </div>
+            <div th:if="${patients.empty}" th:text="#{patient.list.empty}" />
+            <div th:if="${!patients.empty}" class="table-responsive">
+                <table class="table table-striped table-hover align-middle">
+                    <thead>
+                        <tr>
+                            <th th:text="#{patient.id.label}" scope="col" />
+                            <th th:text="#{patient.patientNumber.label}" scope="col" />
+                            <th th:text="#{patient.firstName.label}" scope="col" />
+                            <th th:text="#{patient.surname.label}" scope="col" />
+                            <th th:text="#{patient.address.label}" scope="col" />
+                            <th th:text="#{patient.dateOfBirth.label}" scope="col" />
+                            <th th:text="#{patient.gender.label}" scope="col" />
+                            <th><!-- --></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="patient : ${patients}">
+                            <td th:text="${patient.id}" />
+                            <td th:text="${patient.patientNumber}" />
+                            <td th:text="${patient.firstName}" />
+                            <td th:text="${patient.surname}" />
+                            <td th:text="${patient.address}" />
+                            <td th:text="${patient.dateOfBirth}" />
+                            <td th:text="${patient.gender}" />
+                            <td>
+                                <div class="float-end text-nowrap">
+                                    <a th:href="@{/patients/edit/{id}(id=${patient.id})}" th:text="#{patient.list.edit}" class="btn btn-sm btn-info" />
+                                    <form th:action="@{/patients/delete/{id}(id=${patient.id})}"
+                                            th:data-confirm-message="#{delete.confirm}" method="post" class="js-submit-confirm d-inline">
+                                        <button th:text="#{patient.list.delete}" type="submit" class="btn btn-sm btn-danger" />
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>

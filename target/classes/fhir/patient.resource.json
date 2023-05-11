@@ -1,0 +1,18 @@
+{
+  "Patient": {
+    "type": "patient",
+    "endpoint": "/patient/{id}",
+    "fields": {
+      "id": "id",
+      "firstName": "name.given",
+      "lastName": "name.family",
+      "gender": "gender",
+      "birthDate": "birthDate",
+      "bloodType": "extension.bloodType",
+      "height": "height",
+      "weight": "weight",
+      "diabetic": "extension.diabetic",
+      "hypertensive": "extension.hypertensive"
+    }
+  }
+}
